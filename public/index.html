@@ -1,52 +1,1073 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Download Facebook Reels and public videos with a simple online downloader.">
-<meta name="robots" content="index,follow">
-<meta name="theme-color" content="#1877f2">
-<title>Facebook Reel Downloader</title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Facebook Video Downloader – Fast & Free</title>
+
+<meta name="description"
+content="Download Facebook videos and reels quickly with our free, mobile-friendly Facebook Video Downloader.">
+
+<meta name="keywords"
+content="Facebook video downloader, Facebook reel downloader, download Facebook video, FB downloader">
+
+<meta name="robots" content="index, follow">
+
+<!-- Replace your-domain.com with your real domain -->
+<link rel="canonical" href="https://your-domain.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Facebook Video Downloader – Fast & Free">
+<meta property="og:description"
+content="Download Facebook videos and reels quickly and easily.">
+<meta property="og:url" content="https://your-domain.com/">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Facebook Video Downloader">
+<meta name="twitter:description"
+content="Fast, simple and mobile-friendly Facebook video downloader.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Facebook Video Downloader",
+  "url": "https://your-domain.com/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All"
+}
+</script>
+
 <style>
-:root{--bg:#07111f;--card:rgba(15,29,49,.84);--text:#f7fbff;--muted:#9fb0c4;--blue:#1877f2;--blue2:#42a5ff;--border:rgba(255,255,255,.1)}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(24,119,242,.24),transparent 35%),radial-gradient(circle at 90% 20%,rgba(66,165,255,.14),transparent 30%),var(--bg)}
-.wrap{width:min(760px,92%);margin:auto;padding:42px 0 50px}.brand{text-align:center;margin-bottom:28px}.logo{width:68px;height:68px;margin:0 auto 16px;border-radius:20px;display:grid;place-items:center;font-size:32px;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 18px 50px rgba(24,119,242,.3)}
-h1{margin:0 0 8px;font-size:clamp(30px,7vw,48px);letter-spacing:-1.5px}.brand p{margin:0;color:var(--muted);font-size:15px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:26px;padding:22px;backdrop-filter:blur(16px);box-shadow:0 25px 80px rgba(0,0,0,.25)}
-label{display:block;margin:0 0 9px;font-weight:800;font-size:14px}.input-row{display:flex;gap:10px}input{width:100%;min-width:0;border:1px solid var(--border);outline:0;border-radius:16px;padding:16px;color:var(--text);background:rgba(255,255,255,.055);font-size:15px}input:focus{border-color:rgba(66,165,255,.8);box-shadow:0 0 0 3px rgba(66,165,255,.12)}
-button,.result-btn{border:0;border-radius:16px;padding:15px 19px;font-weight:850;font-size:15px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-#downloadBtn{color:#fff;background:linear-gradient(135deg,var(--blue),var(--blue2));min-width:150px}#downloadBtn:disabled{opacity:.55;cursor:not-allowed}
-.hint{color:var(--muted);font-size:12px;margin-top:10px}#status{display:none;margin-top:18px;padding:13px 15px;border-radius:14px;background:rgba(255,255,255,.06);color:var(--muted);font-size:14px}#status.error{display:block;color:#ffd0d0;border:1px solid rgba(255,107,107,.25);background:rgba(255,107,107,.08)}#status.success{display:block;color:#c8ffe0;border:1px solid rgba(85,217,139,.25);background:rgba(85,217,139,.08)}
-#result{display:none;margin-top:18px}.result-box{border:1px solid var(--border);border-radius:20px;padding:17px;background:rgba(255,255,255,.035)}.result-title{font-weight:900;margin-bottom:13px}.buttons{display:grid;gap:10px}.result-btn{color:#fff;background:rgba(24,119,242,.18);border:1px solid rgba(66,165,255,.25)}
-.raw{margin-top:14px;color:#b9c8d9;background:#050b13;border-radius:14px;padding:12px;max-height:280px;overflow:auto;font-size:11px;white-space:pre-wrap;word-break:break-word}
-.ad{min-height:90px;margin:20px 0;display:grid;place-items:center;border:1px dashed rgba(255,255,255,.12);border-radius:18px;color:#6f8094;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-footer{text-align:center;color:#708198;font-size:12px;margin-top:22px;line-height:1.7}
-@media(max-width:620px){.wrap{padding-top:28px}.card{padding:17px;border-radius:22px}.input-row{flex-direction:column}#downloadBtn{width:100%}}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #172033;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
+}
+
+/* NAVBAR */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e8ecf3;
+}
+
+.nav {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: 800;
+  color: #1877f2;
+}
+
+.navlinks {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  color: #5c6678;
+}
+
+/* HERO */
+
+.hero {
+  padding: 78px 0 60px;
+  background: linear-gradient(180deg,#f5f9ff,#fff);
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 99px;
+  background: #eaf3ff;
+  color: #1877f2;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(36px,7vw,62px);
+  line-height: 1.08;
+  margin: 18px auto 15px;
+  max-width: 850px;
+  letter-spacing: -2px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 28px;
+  color: #687386;
+}
+
+/* DOWNLOADER */
+
+.downloader {
+  max-width: 760px;
+  margin: 25px auto 0;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #e1e7f0;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(20,50,90,.1);
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  padding: 17px;
+  font-size: 15px;
+  min-width: 0;
+  color: #172033;
+}
+
+button,
+.download-link {
+  border: 0;
+  border-radius: 12px;
+  background: #1877f2;
+  color: white;
+  padding: 0 24px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* RESULT */
+
+.status {
+  max-width: 760px;
+  margin: 16px auto 0;
+  text-align: left;
+}
+
+.result {
+  display: none;
+  padding: 18px;
+  background: #f7faff;
+  border: 1px solid #dceaff;
+  border-radius: 14px;
+}
+
+.result.show {
+  display: block;
+}
+
+.result a {
+  background: #1877f2;
+  color: #fff;
+  padding: 11px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* SECTIONS */
+
+section {
+  padding: 70px 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 34px;
+  margin: 0 0 12px;
+}
+
+.section-sub {
+  text-align: center;
+  color: #70798a;
+  margin: 0 auto 38px;
+  max-width: 650px;
+}
+
+/* CARDS */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #e8ecf3;
+  border-radius: 18px;
+  padding: 26px;
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(30,50,80,.05);
+}
+
+.icon {
+  font-size: 28px;
+}
+
+.card h3 {
+  margin: 10px 0 6px;
+}
+
+.card p {
+  margin: 0;
+  color: #6b7484;
+  font-size: 14px;
+}
+
+/* STEPS */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 22px;
+}
+
+.step {
+  text-align: center;
+}
+
+.num {
+  width: 46px;
+  height: 46px;
+  margin: auto;
+  border-radius: 50%;
+  background: #eaf3ff;
+  color: #1877f2;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+/* FAQ */
+
+.faq {
+  max-width: 800px;
+  margin: auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e9f0;
+}
+
+.faq-q {
+  width: 100%;
+  padding: 20px 4px;
+  background: none;
+  color: #172033;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  text-align: left;
+}
+
+.faq-a {
+  display: none;
+  color: #697386;
+  padding: 0 4px 20px;
+}
+
+.faq-item.open .faq-a {
+  display: block;
+}
+
+/* POLICY */
+
+.policy {
+  max-width: 850px;
+  margin: auto;
+}
+
+.policy h3 {
+  margin-top: 28px;
+}
+
+.policy p,
+.policy li {
+  color: #626d7f;
+}
+
+/* TRUST */
+
+.trust {
+  text-align: center;
+  background: #f7faff;
+  border: 1px solid #e4edf9;
+  border-radius: 22px;
+  padding: 30px;
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid #e8ecf3;
+  padding: 30px 0;
+  color: #70798a;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+  .navlinks {
+    display: none;
+  }
+
+  .hero {
+    padding: 55px 0 45px;
+  }
+
+  .downloader {
+    flex-direction: column;
+    padding: 9px;
+  }
+
+  .downloader button {
+    height: 52px;
+  }
+
+  .grid,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 52px 0;
+  }
+
+  h2 {
+    font-size: 29px;
+  }
+
+}
+
 </style>
 </head>
 <body>
-<main class="wrap">
-<header class="brand"><div class="logo">f</div><h1>Facebook Reel Downloader</h1><p>Paste a public Facebook Reel or video link to continue.</p></header>
-<div class="ad">Advertisement Space</div>
-<section class="card">
-<label for="url">Facebook Video URL</label>
-<div class="input-row"><input id="url" type="url" inputmode="url" autocomplete="off" placeholder="https://www.facebook.com/reel/..."><button id="downloadBtn">Get Video</button></div>
-<div class="hint">Only use videos you have permission to download and reuse.</div>
-<div id="status" role="status"></div>
-<div id="result"><div class="result-box"><div class="result-title">Available video links</div><div id="buttons" class="buttons"></div><pre id="raw" class="raw"></pre></div></div>
+
+<nav>
+  <div class="container nav">
+    <a class="logo" href="#">FBDownloader</a>
+
+    <div class="navlinks">
+      <a href="#how">How It Works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+
+  <div class="container">
+
+    <span class="badge">
+      ⚡ Fast • Free • Mobile Friendly
+    </span>
+
+    <h1>
+      Facebook Video Downloader
+    </h1>
+
+    <p>
+      Download Facebook videos and reels quickly.
+      Paste a public Facebook video URL below and get your download link.
+    </p>
+
+
+    <!-- DOWNLOAD BOX -->
+    <div class="downloader">
+
+      <input
+        id="urlInput"
+        type="url"
+        placeholder="Paste Facebook video URL here..."
+        autocomplete="off"
+      >
+
+      <button id="downloadBtn">
+        Download
+      </button>
+
+    </div>
+
+
+    <!-- RESULT -->
+    <div class="status">
+
+      <div id="result" class="result"></div>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- HOW IT WORKS -->
+<section id="how">
+
+  <div class="container">
+
+    <h2>
+      How It Works
+    </h2>
+
+    <p class="section-sub">
+      Three simple steps to download a supported public Facebook video.
+    </p>
+
+
+    <div class="steps">
+
+      <div class="step">
+
+        <div class="num">
+          1
+        </div>
+
+        <h3>
+          Copy URL
+        </h3>
+
+        <p>
+          Copy the Facebook video or reel link.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="num">
+          2
+        </div>
+
+        <h3>
+          Paste Link
+        </h3>
+
+        <p>
+          Paste the link into the downloader above.
+        </p>
+
+      </div>
+
+
+      <div class="step">
+
+        <div class="num">
+          3
+        </div>
+
+        <h3>
+          Download
+        </h3>
+
+        <p>
+          Use the generated download link when available.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
-<div class="ad">Advertisement Space</div>
-<footer>This site is an independent tool and is not affiliated with Facebook or Meta.<br>API requests are processed through a secure server-side function.</footer>
-</main>
+
+
+
+<!-- FEATURES -->
+<section>
+
+  <div class="container">
+
+    <h2>
+      Why Use FBDownloader?
+    </h2>
+
+    <p class="section-sub">
+      A clean and simple downloader experience built for phones and desktops.
+    </p>
+
+
+    <div class="grid">
+
+      <div class="card">
+
+        <div class="icon">
+          🚀
+        </div>
+
+        <h3>
+          Fast
+        </h3>
+
+        <p>
+          Simple interface with a quick request flow.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">
+          📱
+        </div>
+
+        <h3>
+          Mobile Friendly
+        </h3>
+
+        <p>
+          Responsive design works across modern devices.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="icon">
+          🔒
+        </div>
+
+        <h3>
+          Privacy Focused
+        </h3>
+
+        <p>
+          We do not intentionally store submitted URLs permanently.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- TRUST -->
+<section>
+
+  <div class="container">
+
+    <div class="trust">
+
+      <h2>
+        Use Responsibly
+      </h2>
+
+      <p>
+        Only download videos you have permission to save or
+        content that is otherwise permitted by the creator and
+        applicable rules. Private Facebook videos are not supported.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- FAQ -->
+<section id="faq">
+
+  <div class="container">
+
+    <h2>
+      Frequently Asked Questions
+    </h2>
+
+    <p class="section-sub">
+      Common questions about the Facebook Video Downloader.
+    </p>
+
+
+    <div class="faq">
+
+
+      <!-- FAQ 1 -->
+      <div class="faq-item">
+
+        <button class="faq-q">
+          Facebook Reel कसरी download गर्ने?
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          Public Facebook Reel को link copy गरेर
+          माथिको box मा paste गर्नुहोस् र Download थिच्नुहोस्।
+        </div>
+
+      </div>
+
+
+      <!-- FAQ 2 -->
+      <div class="faq-item">
+
+        <button class="faq-q">
+          Facebook Video Downloader free हो?
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          यो website को downloader interface free प्रयोग गर्न
+          मिल्ने गरी बनाइएको छ।
+        </div>
+
+      </div>
+
+
+      <!-- FAQ 3 -->
+      <div class="faq-item">
+
+        <button class="faq-q">
+          HD/SD video download गर्न मिल्छ?
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          API ले उपलब्ध गराएको format र quality अनुसार
+          download option देखिन सक्छ।
+        </div>
+
+      </div>
+
+
+      <!-- FAQ 4 -->
+      <div class="faq-item">
+
+        <button class="faq-q">
+          Mobile मा काम गर्छ?
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          हो। Website responsive छ र modern mobile browsers
+          का लागि design गरिएको छ।
+        </div>
+
+      </div>
+
+
+      <!-- FAQ 5 -->
+      <div class="faq-item">
+
+        <button class="faq-q">
+          Download गरिएको video कहाँ save हुन्छ?
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          Download गरेपछि browser को सामान्य Downloads folder
+          मा save हुन्छ, तपाईंको device/browser settings अनुसार।
+        </div>
+
+      </div>
+
+
+      <!-- FAQ 6 -->
+      <div class="faq-item">
+
+        <button class="faq-q">
+          Private Facebook video download गर्न मिल्छ?
+          <span>+</span>
+        </button>
+
+        <div class="faq-a">
+          होइन। यो tool public र supported Facebook URLs
+          का लागि मात्र हो।
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- PRIVACY POLICY -->
+<section id="privacy">
+
+  <div class="container policy">
+
+    <h2>
+      Privacy Policy
+    </h2>
+
+    <p>
+      We respect your privacy. This website is designed to
+      process the Facebook URL you submit only to provide
+      the requested downloader service.
+    </p>
+
+
+    <h3>
+      Information We Process
+    </h3>
+
+    <p>
+      The submitted URL may be sent to our serverless API
+      and the selected third-party API provider needed to
+      process the request. We do not intentionally store
+      submitted URLs permanently.
+    </p>
+
+
+    <h3>
+      Cookies & Analytics
+    </h3>
+
+    <p>
+      If analytics or advertising services are added,
+      they may use cookies or similar technologies according
+      to their own policies.
+    </p>
+
+
+    <h3>
+      Third-Party Services
+    </h3>
+
+    <p>
+      Downloader processing may rely on third-party APIs.
+      Their own terms and privacy policies may apply.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- TERMS -->
+<section id="terms">
+
+  <div class="container policy">
+
+    <h2>
+      Terms & Conditions
+    </h2>
+
+    <p>
+      By using this website, you agree to use the service
+      only for lawful purposes.
+    </p>
+
+
+    <h3>
+      Content Responsibility
+    </h3>
+
+    <p>
+      You are responsible for ensuring that you have the
+      right or permission to download and use any content
+      you request.
+    </p>
+
+
+    <h3>
+      Service Availability
+    </h3>
+
+    <p>
+      The service may be unavailable, limited, or changed
+      at any time. We do not guarantee that every URL will work.
+    </p>
+
+
+    <h3>
+      Prohibited Use
+    </h3>
+
+    <p>
+      Do not use the service to violate copyright, privacy,
+      platform rules, or applicable law.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="container">
+
+    © 2026 FBDownloader. All rights reserved.
+
+  </div>
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
 <script>
-const input=document.getElementById("url"),btn=document.getElementById("downloadBtn"),statusBox=document.getElementById("status"),result=document.getElementById("result"),buttons=document.getElementById("buttons"),raw=document.getElementById("raw");
-function status(msg,type=""){statusBox.textContent=msg;statusBox.className=type;statusBox.style.display="block"}
-function isFB(v){try{const h=new URL(v).hostname.toLowerCase().replace(/^www\./,"");return h==="facebook.com"||h==="m.facebook.com"||h==="fb.watch"||h.endsWith(".facebook.com")}catch{return false}}
-function isHttp(v){return typeof v==="string"&&/^https?:\/\/\S+$/i.test(v)}
-function collect(v,path="data",out=[],seen=new Set()){if(out.length>=12||v==null)return out;if(typeof v==="string"){if(isHttp(v)){const p=path.toLowerCase(),score=(p.includes("hd")?6:0)+(p.includes("sd")?5:0)+(p.includes("video")?5:0)+(p.includes("download")?5:0)+(p.includes("url")?2:0)+(p.includes("link")?2:0);if(!seen.has(v)){seen.add(v);out.push({url:v,path,score})}}return out}if(Array.isArray(v)){v.forEach((x,i)=>collect(x,path+"["+i+"]",out,seen));return out}if(typeof v==="object")Object.entries(v).forEach(([k,x])=>collect(x,path+"."+k,out,seen));return out}
-function render(data){const found=collect(data).sort((a,b)=>b.score-a.score).slice(0,8);buttons.innerHTML="";if(!found.length){buttons.innerHTML='<div style="color:#9fb0c4;font-size:14px">The API responded, but no direct video URL was found.</div>'}else found.forEach((x,i)=>{const a=document.createElement("a");a.className="result-btn";a.href=x.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=x.path.toLowerCase().includes("hd")?"Download HD":x.path.toLowerCase().includes("sd")?"Download SD":"Open Video "+(i+1);buttons.appendChild(a)});raw.textContent=JSON.stringify(data,null,2);result.style.display="block"}
-async function download(){const url=input.value.trim();result.style.display="none";statusBox.style.display="none";if(!url)return status("Please paste a Facebook video URL.","error");if(!isFB(url))return status("Please enter a valid Facebook URL.","error");btn.disabled=true;btn.textContent="Getting video...";status("Connecting to the downloader API...");try{const r=await fetch("/api/download",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({url})});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"Request failed.");render(d.data);status("Video information received. Choose a link below.","success")}catch(e){status(e.message||"Something went wrong.","error")}finally{btn.disabled=false;btn.textContent="Get Video"}}
-btn.addEventListener("click",download);input.addEventListener("keydown",e=>{if(e.key==="Enter")download()});
+
+const API_ENDPOINT =
+  "/.netlify/functions/download";
+
+
+const input =
+  document.getElementById("urlInput");
+
+
+const btn =
+  document.getElementById("downloadBtn");
+
+
+const result =
+  document.getElementById("result");
+
+
+
+/* CHECK FACEBOOK URL */
+
+function isFacebookUrl(value) {
+
+  try {
+
+    const u = new URL(value);
+
+    return (
+      /(^|\.)facebook\.com$/.test(u.hostname) ||
+      /(^|\.)fb\.watch$/.test(u.hostname) ||
+      /(^|\.)m\.facebook\.com$/.test(u.hostname)
+    );
+
+  } catch (e) {
+
+    return false;
+
+  }
+
+}
+
+
+
+/* DOWNLOAD BUTTON */
+
+btn.addEventListener(
+  "click",
+  async () => {
+
+    const url =
+      input.value.trim();
+
+
+    result.className =
+      "result show";
+
+
+    /* EMPTY URL */
+
+    if (!url) {
+
+      result.innerHTML =
+        "Please paste a Facebook video URL.";
+
+      return;
+
+    }
+
+
+    /* INVALID URL */
+
+    if (!isFacebookUrl(url)) {
+
+      result.innerHTML =
+        "Please enter a valid public Facebook video URL.";
+
+      return;
+
+    }
+
+
+    /* LOADING */
+
+    btn.disabled = true;
+
+    btn.textContent =
+      "Processing...";
+
+    result.innerHTML =
+      "Getting your download link...";
+
+
+    try {
+
+      const res =
+        await fetch(
+          API_ENDPOINT,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify({
+                url: url
+              })
+          }
+        );
+
+
+      const data =
+        await res.json();
+
+
+      const downloadUrl =
+        data.downloadUrl ||
+        data.download_url ||
+        data.url;
+
+
+      if (!res.ok || !downloadUrl) {
+
+        throw new Error(
+          "Download URL not found"
+        );
+
+      }
+
+
+      /* SUCCESS */
+
+      result.innerHTML =
+        '<strong>Video ready.</strong><br>' +
+
+        '<a class="download-link" ' +
+
+        'href="' +
+        downloadUrl +
+        '" ' +
+
+        'target="_blank" ' +
+
+        'rel="noopener">' +
+
+        'Download Video' +
+
+        '</a>';
+
+    }
+
+
+    catch (err) {
+
+      result.innerHTML =
+        "Download failed. Check your API subscription/configuration and try again.";
+
+    }
+
+
+    finally {
+
+      btn.disabled = false;
+
+      btn.textContent =
+        "Download";
+
+    }
+
+  }
+);
+
+
+
+/* FAQ ACCORDION */
+
+document
+  .querySelectorAll(".faq-q")
+  .forEach(
+    q => {
+
+      q.addEventListener(
+        "click",
+        () => {
+
+          const item =
+            q.parentElement;
+
+
+          item.classList.toggle(
+            "open"
+          );
+
+
+          q.querySelector(
+            "span"
+          ).textContent =
+
+            item.classList.contains(
+              "open"
+            )
+            ? "−"
+            : "+";
+
+        }
+      );
+
+    }
+);
+
 </script>
+
 </body>
 </html>
