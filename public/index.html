@@ -1,1 +1,52 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Download Facebook Reels and public videos with a simple online downloader.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1877f2">
+<title>Facebook Reel Downloader</title>
+<style>
+:root{--bg:#07111f;--card:rgba(15,29,49,.84);--text:#f7fbff;--muted:#9fb0c4;--blue:#1877f2;--blue2:#42a5ff;--border:rgba(255,255,255,.1)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(24,119,242,.24),transparent 35%),radial-gradient(circle at 90% 20%,rgba(66,165,255,.14),transparent 30%),var(--bg)}
+.wrap{width:min(760px,92%);margin:auto;padding:42px 0 50px}.brand{text-align:center;margin-bottom:28px}.logo{width:68px;height:68px;margin:0 auto 16px;border-radius:20px;display:grid;place-items:center;font-size:32px;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 18px 50px rgba(24,119,242,.3)}
+h1{margin:0 0 8px;font-size:clamp(30px,7vw,48px);letter-spacing:-1.5px}.brand p{margin:0;color:var(--muted);font-size:15px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:26px;padding:22px;backdrop-filter:blur(16px);box-shadow:0 25px 80px rgba(0,0,0,.25)}
+label{display:block;margin:0 0 9px;font-weight:800;font-size:14px}.input-row{display:flex;gap:10px}input{width:100%;min-width:0;border:1px solid var(--border);outline:0;border-radius:16px;padding:16px;color:var(--text);background:rgba(255,255,255,.055);font-size:15px}input:focus{border-color:rgba(66,165,255,.8);box-shadow:0 0 0 3px rgba(66,165,255,.12)}
+button,.result-btn{border:0;border-radius:16px;padding:15px 19px;font-weight:850;font-size:15px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+#downloadBtn{color:#fff;background:linear-gradient(135deg,var(--blue),var(--blue2));min-width:150px}#downloadBtn:disabled{opacity:.55;cursor:not-allowed}
+.hint{color:var(--muted);font-size:12px;margin-top:10px}#status{display:none;margin-top:18px;padding:13px 15px;border-radius:14px;background:rgba(255,255,255,.06);color:var(--muted);font-size:14px}#status.error{display:block;color:#ffd0d0;border:1px solid rgba(255,107,107,.25);background:rgba(255,107,107,.08)}#status.success{display:block;color:#c8ffe0;border:1px solid rgba(85,217,139,.25);background:rgba(85,217,139,.08)}
+#result{display:none;margin-top:18px}.result-box{border:1px solid var(--border);border-radius:20px;padding:17px;background:rgba(255,255,255,.035)}.result-title{font-weight:900;margin-bottom:13px}.buttons{display:grid;gap:10px}.result-btn{color:#fff;background:rgba(24,119,242,.18);border:1px solid rgba(66,165,255,.25)}
+.raw{margin-top:14px;color:#b9c8d9;background:#050b13;border-radius:14px;padding:12px;max-height:280px;overflow:auto;font-size:11px;white-space:pre-wrap;word-break:break-word}
+.ad{min-height:90px;margin:20px 0;display:grid;place-items:center;border:1px dashed rgba(255,255,255,.12);border-radius:18px;color:#6f8094;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+footer{text-align:center;color:#708198;font-size:12px;margin-top:22px;line-height:1.7}
+@media(max-width:620px){.wrap{padding-top:28px}.card{padding:17px;border-radius:22px}.input-row{flex-direction:column}#downloadBtn{width:100%}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="brand"><div class="logo">f</div><h1>Facebook Reel Downloader</h1><p>Paste a public Facebook Reel or video link to continue.</p></header>
+<div class="ad">Advertisement Space</div>
+<section class="card">
+<label for="url">Facebook Video URL</label>
+<div class="input-row"><input id="url" type="url" inputmode="url" autocomplete="off" placeholder="https://www.facebook.com/reel/..."><button id="downloadBtn">Get Video</button></div>
+<div class="hint">Only use videos you have permission to download and reuse.</div>
+<div id="status" role="status"></div>
+<div id="result"><div class="result-box"><div class="result-title">Available video links</div><div id="buttons" class="buttons"></div><pre id="raw" class="raw"></pre></div></div>
+</section>
+<div class="ad">Advertisement Space</div>
+<footer>This site is an independent tool and is not affiliated with Facebook or Meta.<br>API requests are processed through a secure server-side function.</footer>
+</main>
+<script>
+const input=document.getElementById("url"),btn=document.getElementById("downloadBtn"),statusBox=document.getElementById("status"),result=document.getElementById("result"),buttons=document.getElementById("buttons"),raw=document.getElementById("raw");
+function status(msg,type=""){statusBox.textContent=msg;statusBox.className=type;statusBox.style.display="block"}
+function isFB(v){try{const h=new URL(v).hostname.toLowerCase().replace(/^www\./,"");return h==="facebook.com"||h==="m.facebook.com"||h==="fb.watch"||h.endsWith(".facebook.com")}catch{return false}}
+function isHttp(v){return typeof v==="string"&&/^https?:\/\/\S+$/i.test(v)}
+function collect(v,path="data",out=[],seen=new Set()){if(out.length>=12||v==null)return out;if(typeof v==="string"){if(isHttp(v)){const p=path.toLowerCase(),score=(p.includes("hd")?6:0)+(p.includes("sd")?5:0)+(p.includes("video")?5:0)+(p.includes("download")?5:0)+(p.includes("url")?2:0)+(p.includes("link")?2:0);if(!seen.has(v)){seen.add(v);out.push({url:v,path,score})}}return out}if(Array.isArray(v)){v.forEach((x,i)=>collect(x,path+"["+i+"]",out,seen));return out}if(typeof v==="object")Object.entries(v).forEach(([k,x])=>collect(x,path+"."+k,out,seen));return out}
+function render(data){const found=collect(data).sort((a,b)=>b.score-a.score).slice(0,8);buttons.innerHTML="";if(!found.length){buttons.innerHTML='<div style="color:#9fb0c4;font-size:14px">The API responded, but no direct video URL was found.</div>'}else found.forEach((x,i)=>{const a=document.createElement("a");a.className="result-btn";a.href=x.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=x.path.toLowerCase().includes("hd")?"Download HD":x.path.toLowerCase().includes("sd")?"Download SD":"Open Video "+(i+1);buttons.appendChild(a)});raw.textContent=JSON.stringify(data,null,2);result.style.display="block"}
+async function download(){const url=input.value.trim();result.style.display="none";statusBox.style.display="none";if(!url)return status("Please paste a Facebook video URL.","error");if(!isFB(url))return status("Please enter a valid Facebook URL.","error");btn.disabled=true;btn.textContent="Getting video...";status("Connecting to the downloader API...");try{const r=await fetch("/api/download",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({url})});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"Request failed.");render(d.data);status("Video information received. Choose a link below.","success")}catch(e){status(e.message||"Something went wrong.","error")}finally{btn.disabled=false;btn.textContent="Get Video"}}
+btn.addEventListener("click",download);input.addEventListener("keydown",e=>{if(e.key==="Enter")download()});
+</script>
+</body>
+</html>
