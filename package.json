@@ -1,0 +1,8 @@
+{
+  "name": "facebook-reel-downloader-netlify",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Facebook Reel and video downloader using a Netlify Function and RapidAPI.",
+  "scripts": { "dev": "netlify dev" },
+  "engines": { "node": ">=18" }
+}
